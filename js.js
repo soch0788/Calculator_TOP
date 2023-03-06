@@ -20,6 +20,14 @@ function operate() {
     document.querySelector('#answer').textContent = ans
 }
 
+function numberEnter() {
+    let oldnum = document.querySelector('#number1').textContent
+    console.log(oldnum)
+    document.querySelector('#number2').textContent = oldnum
+    document.querySelector('#number1').textContent = this.id
+}
+
+
 function add(num1, num2) {
     return (num1+num2)
 }
@@ -38,8 +46,8 @@ function divide(num1, num2) {
 
 const funcButtons = document.querySelectorAll(".function")
 funcButtons.forEach(btn => btn.addEventListener('click', operate))
-
-
+const numberBTN = document.querySelectorAll(".number")
+numberBTN.forEach(btn => btn.addEventListener('click', numberEnter))
 // const addButton = document.querySelector('#add')
 // addButton.addEventListener('click', operate)
 
