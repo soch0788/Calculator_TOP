@@ -1,0 +1,10 @@
+.calc {
+    display: grid;
+    grid-template-columns: 4;
+    border:red solid;
+}
+.calc-3 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    border:green solid;
+}

@@ -17,21 +17,41 @@ function operate(type) {
     else if(type == "divide"){
         ans = (divide(num1, num2))
     }
-    
+    let temp = document.querySelector('#answer').textContent
+    let temp2 = [...temp]  
     document.querySelector('#answer').textContent = ans
     document.querySelector('#number1').textContent = ans
+    document.querySelector("#last-eq").textContent = temp2 + " " + functSymbol + " " + document.querySelector('#number2').textContent + " ="
 }
 
 function numberEnter() {
     if (clearSTS){
     document.querySelector('#number1').textContent += this.textContent
     document.querySelector('#answer').textContent += this.textContent
-    }
+        
+}
     else if(newNum == false){
         document.querySelector('#number2').textContent += this.textContent
         document.querySelector('#answer').textContent = document.querySelector('#number2').textContent
     }
     else {
+        if(funcType == "add")
+        {
+            functSymbol = "+"
+        } 
+        else if(funcType == "subtract")
+        {
+            functSymbol = "-"
+        } 
+        else if (funcType == "multiply")
+        {
+            functSymbol = "*"
+        }
+        else if(funcType == "divide")
+        {
+            functSymbol = "/"
+        } 
+        document.querySelector('#last-eq').textContent = document.querySelector('#answer').textContent + " " + functSymbol
         newNum = false
         document.querySelector('#number2').textContent = this.textContent
         document.querySelector('#answer').textContent = document.querySelector('#number2').textContent
@@ -39,9 +59,8 @@ function numberEnter() {
 }
 
 function clearBTN() {
-    document.querySelector('#number1').textContent = ""
-    document.querySelector('#number2').textContent = ""
-    document.querySelector('#answer').textContent = ""
+    document.querySelectorAll('.display').forEach(a => a.textContent = "")
+
     clearSTS = true
     newNum = true
 }
@@ -52,7 +71,6 @@ function type() {
     }
     funcType = this.id
     clearSTS = false
-    
     newNum = true
 }
 
@@ -72,7 +90,7 @@ function multiply(num1, num2){
 function divide(num1, num2) {
     return (Math.floor(num1 / num2))
 }
-
+let functSymbol = "+"
 let newNum = true
 let clearSTS = true
 const funcButtons = document.querySelectorAll(".function")
