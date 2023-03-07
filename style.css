@@ -17,9 +17,6 @@
     width: 66.7%; 
     
 }
-#number2 {
-    color: red;
-}
 .display {
     border: black solid;
     height: 2rem;
@@ -34,3 +31,9 @@
     /* align-items: center; */
 }
 
+.hidden {
+    color: white;
+    border: none;
+    width: 0;
+    height: 0;
+}
