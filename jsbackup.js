@@ -1,9 +1,9 @@
-function operate(type) {
+function operate() {
     let ans = 0
     let num1 = new Number(document.querySelector('#number1').textContent)
     let num2 = new Number(document.querySelector('#number2').textContent)
-    // let type = this.id
-    // console.log(num1, num2)
+    let type = this.id
+    console.log(num1, num2)
    
     if(type == "add"){
         ans = (add(num1, num2))
@@ -23,11 +23,8 @@ function operate(type) {
 }
 
 function numberEnter() {
-    document.querySelector('#number1').textContent += this.textContent
-}
-
-function type() {
-    funcType = this.id
+    let num = document.querySelector('#number1').textContent + this.textContent
+    document.querySelector('#number1').textContent = num    
 }
 
 
@@ -48,12 +45,7 @@ function divide(num1, num2) {
 }
 
 const funcButtons = document.querySelectorAll(".function")
-funcButtons.forEach(btn => btn.addEventListener('click', type))
-let funcType = "add"
-const eqlButton = document.querySelector("#equals")
-eqlButton.addEventListener('click', function () {operate(funcType)})
-
-
+funcButtons.forEach(btn => btn.addEventListener('click', operate))
 const numberBTN = document.querySelectorAll(".number")
 numberBTN.forEach(btn => btn.addEventListener('click', numberEnter))
 // const addButton = document.querySelector('#add')
