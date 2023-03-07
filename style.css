@@ -20,3 +20,17 @@
 #number2 {
     color: red;
 }
+.display {
+    border: black solid;
+    height: 2rem;
+    width: 10rem;
+    text-align: center;
+}
+
+.display-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+

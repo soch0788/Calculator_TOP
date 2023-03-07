@@ -1,9 +1,9 @@
 function operate(type) {
     let ans = 0
-    let num1 = new Number(document.querySelector('#number1').textContent)
+    let num1 = 5
     let num2 = new Number(document.querySelector('#number2').textContent)
     // let type = this.id
-    // console.log(num1, num2)
+    console.log(num1, num2)
    
     if(type == "add"){
         ans = (add(num1, num2))
@@ -23,7 +23,13 @@ function operate(type) {
 }
 
 function numberEnter() {
-    document.querySelector('#number1').textContent += this.textContent
+    document.querySelector('#number2').textContent += this.textContent
+}
+
+function clearBTN() {
+    document.querySelector('#number1').textContent = ""
+    document.querySelector('#number2').textContent = ""
+    document.querySelector('#answer').textContent = ""
 }
 
 function type() {
@@ -52,6 +58,8 @@ funcButtons.forEach(btn => btn.addEventListener('click', type))
 let funcType = "add"
 const eqlButton = document.querySelector("#equals")
 eqlButton.addEventListener('click', function () {operate(funcType)})
+const clrButton = document.querySelector("#clear")
+clrButton.addEventListener('click', clearBTN)
 
 
 const numberBTN = document.querySelectorAll(".number")
