@@ -1,8 +1,9 @@
 function operate() {
     let ans = 0
-    let num1 = new Number(document.querySelector('#num1').value)
-    let num2 = new Number(document.querySelector('#num2').value)
+    let num1 = new Number(document.querySelector('#number1').textContent)
+    let num2 = new Number(document.querySelector('#number2').textContent)
     let type = this.id
+    console.log(num1, num2)
    
     if(type == "add"){
         ans = (add(num1, num2))
@@ -16,15 +17,14 @@ function operate() {
     else if(type == "divide"){
         ans = (divide(num1, num2))
     }
-    console.log(ans)
+    
     document.querySelector('#answer').textContent = ans
+    document.querySelector('#number1').textContent = ans
 }
 
 function numberEnter() {
-    let oldnum = document.querySelector('#number1').textContent
-    console.log(oldnum)
-    document.querySelector('#number2').textContent = oldnum
-    document.querySelector('#number1').textContent = this.id
+    let num = document.querySelector('#number1').textContent + this.textContent
+    document.querySelector('#number1').textContent = num    
 }
 
 

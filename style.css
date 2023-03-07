@@ -1,0 +1,22 @@
+.calc{
+    display: flex;
+    gap: 1rem;
+    width: 75vh;
+    height: auto
+}
+.calc-func {
+    display: flex;
+    flex-direction: column;
+}
+.calc-3 {
+    width: 100%;
+    display: flex;
+    
+}
+.zero {
+    width: 66.7%; 
+    
+}
+#number2 {
+    color: red;
+}
