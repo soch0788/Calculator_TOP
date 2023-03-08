@@ -1,112 +1,137 @@
-function operate(type) {
-    let ans = 0
-    let num1 = new Number(document.querySelector('#number1').textContent)
-    let num2 = new Number(document.querySelector('#number2').textContent)
-    // let type = this.id
-    // console.log(num1, num2)
-   
-    if(type == "add"){
-        ans = (add(num1, num2))
-    }
-    else if(type == "subtract"){
-        ans = (subtract(num1, num2))
-    }
-    else if(type == "multiply"){
-        ans = (multiply(num1, num2))
-    }
-    else if(type == "divide"){
-        ans = (divide(num1, num2))
-    }
-    let temp = document.querySelector('#answer').textContent
-    let temp2 = [...temp]  
-    document.querySelector('#answer').textContent = ans
-    document.querySelector('#number1').textContent = ans
-    document.querySelector("#last-eq").textContent = temp2 + " " + functSymbol + " " + document.querySelector('#number2').textContent + " ="
-}
-
-function numberEnter() {
-    if (clearSTS){
-    document.querySelector('#number1').textContent += this.textContent
-    document.querySelector('#answer').textContent += this.textContent
-        
-}
-    else if(newNum == false){
-        document.querySelector('#number2').textContent += this.textContent
-        document.querySelector('#answer').textContent = document.querySelector('#number2').textContent
-    }
-    else {
-        if(funcType == "add")
-        {
-            functSymbol = "+"
-        } 
-        else if(funcType == "subtract")
-        {
-            functSymbol = "-"
-        } 
-        else if (funcType == "multiply")
-        {
-            functSymbol = "*"
-        }
-        else if(funcType == "divide")
-        {
-            functSymbol = "/"
-        } 
-        document.querySelector('#last-eq').textContent = document.querySelector('#answer').textContent + " " + functSymbol
-        newNum = false
-        document.querySelector('#number2').textContent = this.textContent
-        document.querySelector('#answer').textContent = document.querySelector('#number2').textContent
-    }
-}
-
-function clearBTN() {
-    document.querySelectorAll('.display').forEach(a => a.textContent = "")
-
-    clearSTS = true
-    newNum = true
-}
-
-function type() {
-    if(newNum == false){
-        operate(funcType)
-    }
-    funcType = this.id
-    clearSTS = false
-    newNum = true
-}
-
-
-function add(num1, num2) {
+function add() {
     return (num1+num2)
 }
 
-function subtract(num1, num2) {
+function subtract() {
     return (num1-num2)
 }
 
-function multiply(num1, num2){
+function multiply(){
     return (num1*num2)
 }
 
-function divide(num1, num2) {
+function divide() {
     return (Math.floor(num1 / num2))
 }
-let functSymbol = "+"
+
+function clearBTN() {
+    num1 = new Number
+    num2 = new Number
+    ansText.textContent = ""
+    newNum = true
+    oldA.textContent = ""
+    firstEq = true
+}
+
+function operate()
+{
+    if(this.id != "equals"){
+        funcType = this.id
+        switch(funcType){
+            case "add":
+                functSymbol = "+"
+                break;
+            case "subtract":
+                functSymbol = "-"
+                break;
+            case "divide":
+                functSymbol = "/"
+                break;
+            case "multiply":
+                functSymbol = "*"
+                break;
+            }
+        if(firstEq){
+            firstEq = false
+            num1 = Number(ansText.textContent)
+            oldA.textContent = num1 + " " + functSymbol
+            ansText.textContent = ""
+        }
+        else{
+            num2 = num1
+            num1 = Number(ansText.textContent)
+            temp = num1
+            num1 = num2
+            num2 = temp
+            switch(oldFunc){
+                case "add":
+                    ans = add();
+                    break;
+                case "subtract":
+                    ans = subtract();
+                    break;
+                case "divide":
+                    ans = divide();
+                    break;
+                case "multiply":
+                    ans = multiply();
+                    break;
+                }
+            ansText.textContent = ans
+            num3 = num1
+            num1 = ans
+            oldA.textContent = num1 + " " + functSymbol
+            }
+        oldFunc = funcType
+        newNum = true
+        }
+    else {
+        firstEq = true
+        num2 = num1
+        num1 = Number(ansText.textContent)
+        temp = num1
+            num1 = num2
+            num2 = temp
+        switch(funcType){
+            case "add":
+                ans = add();
+                break;
+            case "subtract":
+                ans = subtract();
+                break;;
+            case "divide":
+                ans = divide();
+                break;
+            case "multiply":
+                ans = multiply();
+                break;
+            }
+        ansText.textContent = ans
+        num3 = num1
+        num1 = ans
+        oldA.textContent = num3 + " " + functSymbol + " " + num2 + " = "
+    }
+}
+
+function enterNum() {
+    if(newNum) {
+        newNum = false
+        ansText.textContent = this.textContent
+    }
+    else {
+        ansText.textContent += this.textContent
+    }
+}
+
+let firstEq = true
 let newNum = true
-let clearSTS = true
-const funcButtons = document.querySelectorAll(".function")
-funcButtons.forEach(btn => btn.addEventListener('click', type))
-let funcType = "add"
-const eqlButton = document.querySelector("#equals")
-eqlButton.addEventListener('click', function () {operate(funcType)})
-const clrButton = document.querySelector("#clear")
-clrButton.addEventListener('click', clearBTN)
+let funcType = ""
+let num1 = new Number
+let num2 = new Number
+let ans
+let oldFunc
+let functSymbol
 
 
-const numberBTN = document.querySelectorAll(".number")
-numberBTN.forEach(btn => btn.addEventListener('click', numberEnter))
-// const addButton = document.querySelector('#add')
-// addButton.addEventListener('click', operate)
+let ansText = document.querySelector('#answer')
+let oldA = document.querySelector('#last-eq')
 
-// const subButton = document.querySelector('#subtract')
-// const multButton = document.querySelector('#multiply')
-// const divaddButton = document.querySelector('#divide')
+let funcBTN = document.querySelectorAll('.function')
+funcBTN.forEach(a => a.addEventListener("click", operate))
+
+let clearBT = document.querySelector('#clear')
+clearBT.addEventListener("click", clearBTN)
+
+let numBTN = document.querySelectorAll(".number")
+numBTN.forEach(a => a.addEventListener("click", enterNum))
+

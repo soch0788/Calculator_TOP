@@ -1,24 +1,33 @@
 .calc{
     display: flex;
     gap: 1rem;
-    width: 75vh;
+    /* border: red solid;     */
+    justify-content: space-around;
     height: auto
 }
 .calc-func {
+    /* border: green solid; */
+    width: 10vh;
     display: flex;
     flex-direction: column;
 }
 .calc-3 {
-    width: 100%;
+    width: 20vh;
     display: flex;
     
+}
+.number{
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: stretch; */
+    /* justify-content: space-between; */
+    width: 30vh;
 }
 .zero {
     width: 66.7%; 
     
 }
 .display {
-    border: black solid;
     height: 2rem;
     width: 10rem;
     text-align: center;
@@ -28,12 +37,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border: black solid;
     /* align-items: center; */
 }
 
-.hidden {
-    /* color: white; */
-    border: none;
-    width: 0;
-    height: 0;
+.calculator-container {
+    display: flex;
+    flex-direction: column;
+    width: 40vh;
+    border: black solid;
 }
