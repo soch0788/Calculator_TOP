@@ -1,4 +1,6 @@
 function add() {
+    let addAns = (num1+num2)
+    
     return (num1+num2)
 }
 
@@ -7,7 +9,7 @@ function subtract() {
 }
 
 function multiply(){
-    return (num1*num2)
+    return (Math.floor((num1 * num2)*100)/100)
 }
 
 function divide() {
@@ -21,6 +23,11 @@ function clearBTN() {
     newNum = true
     oldA.textContent = ""
     firstEq = true
+}
+
+function partialClear() {
+    ansText.textContent = ""
+    newNum = true
 }
 
 function operate()
@@ -67,10 +74,17 @@ function operate()
                     ans = multiply();
                     break;
                 }
+            if(ans > 999999999){
+                ansText.textContent = "Too large"
+                oldA.textContent = ""
+                firstEq = true
+            }
+            else {
             ansText.textContent = ans
             num3 = num1
             num1 = ans
             oldA.textContent = num1 + " " + functSymbol
+            }
             }
         oldFunc = funcType
         newNum = true
@@ -97,19 +111,43 @@ function operate()
                 ans = multiply();
                 break;
             }
-        ansText.textContent = ans
-        num3 = num1
-        num1 = ans
-        oldA.textContent = num3 + " " + functSymbol + " " + num2 + " = "
+            if(ans > 999999999){
+                ansText.textContent = "Too large"
+                oldA.textContent = ""
+            }
+            else {
+            ansText.textContent = ans
+            num3 = num1
+            num1 = ans
+            oldA.textContent = num3 + " " + functSymbol + " " + num2 + " = "
+            }
     }
 }
 
 function enterNum() {
+    
     if(newNum) {
         newNum = false
         ansText.textContent = this.textContent
     }
+    else if(ansText.textContent.length > 8){
+        ansText.textContent = ansText.textContent.slice(1,) + this.textContent
+    }
     else {
+        ansText.textContent += this.textContent
+    }
+}
+
+function plusMinus() {
+    ansText.textContent *= -1
+}
+
+function decimal() {
+    if(newNum) {
+        newNum = false
+        ansText.textContent = "0."
+    }
+    else if(!ansText.textContent.includes(".")) {
         ansText.textContent += this.textContent
     }
 }
@@ -126,6 +164,15 @@ let functSymbol
 
 let ansText = document.querySelector('#answer')
 let oldA = document.querySelector('#last-eq')
+
+let plusminusBTN = document.querySelector('#plusminus')
+plusminusBTN.addEventListener("click", plusMinus)
+
+let decimalBTN = document.querySelector('#decimal')
+decimalBTN.addEventListener("click", decimal)
+
+let partialClearBTN = document.querySelector("#partclear")
+partialClearBTN.addEventListener("click", partialClear)
 
 let funcBTN = document.querySelectorAll('.function')
 funcBTN.forEach(a => a.addEventListener("click", operate))

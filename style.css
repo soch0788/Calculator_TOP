@@ -19,7 +19,7 @@ button {
     font-size: 24px;
 }
 
-p {
+.display {
     color: white;
     text-align: right;
     /* border: red solid; */
@@ -48,14 +48,14 @@ p {
 
 .display-div{
     height: 6rem;
-    width: 21vh;
+    width: 14rem;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     border: rgb(160,160,160) solid;
     background-color: rgb(80,80,80);
     border-radius: 10%;
-    padding: 2vh;
+    padding: 1vh;
 }
 
 .calculator-container {
@@ -73,6 +73,21 @@ p {
 .calc {
     gap: 6px;
     display: grid;
-    grid-template-columns: 4rem 4rem 4rem 4rem;
-    
+    grid-template-columns: 4rem 4rem 4rem 4rem;    
+}
+
+.footer {
+    background-color: lightgoldenrodyellow;
+    display: flex;
+    justify-content: end;position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;    
+    }
+
+.footerText {
+    text-align: center;
+    color: black;
+    margin: 0 auto;
+    font-size: 16px;
 }
