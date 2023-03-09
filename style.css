@@ -1,49 +1,78 @@
-.calc{
-    display: flex;
-    gap: 1rem;
-    /* border: red solid;     */
-    justify-content: space-around;
-    height: auto
-}
-.calc-func {
-    /* border: green solid; */
-    width: 10vh;
-    display: flex;
-    flex-direction: column;
-}
-.calc-3 {
-    width: 20vh;
-    display: flex;
-    
-}
-.number{
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: stretch; */
-    /* justify-content: space-between; */
-    width: 30vh;
-}
-.zero {
-    width: 66.7%; 
-    
-}
-.display {
-    height: 2rem;
-    width: 10rem;
-    text-align: center;
+.yellow {
+    color: white;
+    background-color: rgb(255, 149, 0);
 }
 
-.display-div {
+.gray {
+    background-color: rgb(212, 212, 210);
+}
+
+.black {
+    color: white;
+    background-color: rgb(80,80,80);
+}
+button {
+    border-radius: 50%;
+    height: 3.6rem;
+    width: 3.6rem;
+    border: none;
+    font-size: 24px;
+}
+
+p {
+    color: white;
+    text-align: right;
+    /* border: red solid; */
+    height: 3rem;
+    
+}
+#answer {
+    font-size: 48px;
+    margin-top: 0;
+}
+#last-eq {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 3vh;
+}
+
+
+.zero {
+    width: 8rem !important;
+    border-radius: 30% !important;
+    text-align: left;
+    padding-left: 1rem;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.display-div{
+    height: 6rem;
+    width: 21vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    border: black solid;
-    /* align-items: center; */
+    align-items: flex-end;
+    border: rgb(160,160,160) solid;
+    background-color: rgb(80,80,80);
+    border-radius: 10%;
+    padding: 2vh;
 }
 
 .calculator-container {
+    width: 16rem;
+    padding: 2.4rem;
+    border-radius: 10%;
+    background-color: black;
     display: flex;
     flex-direction: column;
-    width: 40vh;
-    border: black solid;
+    gap: 40px;
+    margin: 10vh auto;
+
+}
+
+.calc {
+    gap: 6px;
+    display: grid;
+    grid-template-columns: 4rem 4rem 4rem 4rem;
+    
 }

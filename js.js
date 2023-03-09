@@ -11,7 +11,7 @@ function multiply(){
 }
 
 function divide() {
-    return (Math.floor(num1 / num2))
+    return (Math.floor((num1 / num2)*100)/100)
 }
 
 function clearBTN() {
@@ -77,6 +77,7 @@ function operate()
         }
     else {
         firstEq = true
+        newNum = true
         num2 = num1
         num1 = Number(ansText.textContent)
         temp = num1
